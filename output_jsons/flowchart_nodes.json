@@ -1,0 +1,127 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Start",
+      "type": "start",
+      "description": "Entry point of the call flow",
+      "connections": [
+        "2"
+      ],
+      "actor": "system"
+    },
+    {
+      "id": "2",
+      "name": "Is played before?",
+      "type": "decision",
+      "description": "Check if the welcome message has been played before",
+      "connections": [
+        "3",
+        "4"
+      ],
+      "actor": "system"
+    },
+    {
+      "id": "3",
+      "name": "Privacy Notice",
+      "type": "process",
+      "description": "Please note that this call will be recorded for quality assurance purposes. Your privacy, security and data are important to us, and will only be used for providing better service to you. Be assured that we will keep your personal information in strict confidence",
+      "connections": [
+        "4"
+      ],
+      "actor": "system"
+    },
+    {
+      "id": "4",
+      "name": "Main Menu",
+      "type": "process",
+      "description": "To block your account, press 1. To know how much loan you can request, press 2. To retrieve your BVN, press 3. To request information on your account, press 4. To find out how to get a token, press 5. To get your routing number or swift code, press 6. To speak to one of our call centre agents, press 7. To listen to the options again, press 0",
+      "connections": [
+        "5"
+      ],
+      "actor": "system"
+    },
+    {
+      "id": "5",
+      "name": "Check Input",
+      "type": "decision",
+      "description": "Check user input from main menu options",
+      "connections": [
+        "4",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "actor": "system"
+    },
+    {
+      "id": "6",
+      "name": "No Input/No Match",
+      "type": "api",
+      "description": "Handle no input or no match scenario - Skill Name: Q2_1st_1",
+      "connections": [],
+      "actor": "system"
+    },
+    {
+      "id": "7",
+      "name": "Block My Account",
+      "type": "end",
+      "description": "Press 1 - Block account functionality",
+      "connections": [],
+      "actor": "caller"
+    },
+    {
+      "id": "8",
+      "name": "Loan Eligibility Issues",
+      "type": "end",
+      "description": "Press 2 - Loan eligibility inquiry",
+      "connections": [],
+      "actor": "caller"
+    },
+    {
+      "id": "9",
+      "name": "BVN Enquiry",
+      "type": "end",
+      "description": "Press 3 - BVN retrieval functionality",
+      "connections": [],
+      "actor": "caller"
+    },
+    {
+      "id": "10",
+      "name": "Account Details Menu",
+      "type": "end",
+      "description": "Press 4 - Account information request",
+      "connections": [],
+      "actor": "caller"
+    },
+    {
+      "id": "11",
+      "name": "Token Enquiries",
+      "type": "end",
+      "description": "Press 5 - Token information",
+      "connections": [],
+      "actor": "caller"
+    },
+    {
+      "id": "12",
+      "name": "Routing Number or Swift Code Enquiry",
+      "type": "end",
+      "description": "Press 6 - Routing number or swift code inquiry",
+      "connections": [],
+      "actor": "caller"
+    },
+    {
+      "id": "13",
+      "name": "Agent Transfer",
+      "type": "end",
+      "description": "Press 7 - Transfer to call centre agent - Skill Name: Q2_1st_1",
+      "connections": [],
+      "actor": "agent"
+    }
+  ]
+}

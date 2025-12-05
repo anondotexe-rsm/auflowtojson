@@ -1,0 +1,320 @@
+[
+  {
+    "command": "connect",
+    "node_id": "1",
+    "node": "Start",
+    "connected_nodes_list": [
+      "2"
+    ],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "system",
+        "text": "",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "2",
+    "node": "Is played before?",
+    "connected_nodes_list": [
+      "3",
+      "4"
+    ],
+    "type": "agenticdecision",
+    "choice": "multiple",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "system",
+        "text": "Check if the welcome message has been played before",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "3",
+    "node": "Privacy Notice",
+    "connected_nodes_list": [
+      "4"
+    ],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "system",
+        "text": "Please note that this call will be recorded for quality assurance purposes. Your privacy, security and data are important to us, and will only be used for providing better service to you. Be assured that we will keep your personal information in strict confidence",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "4",
+    "node": "Main Menu",
+    "connected_nodes_list": [
+      "5"
+    ],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": true,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "system",
+        "text": "To block your account, press 1. To know how much loan you can request, press 2. To retrieve your BVN, press 3. To request information on your account, press 4. To find out how to get a token, press 5. To get your routing number or swift code, press 6. To speak to one of our call centre agents, press 7. To listen to the options again, press 0",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "5",
+    "node": "Check Input",
+    "connected_nodes_list": [
+      "4",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13"
+    ],
+    "type": "userInput",
+    "choice": "multiple",
+    "stopTime": null,
+    "input_type": "dtmf",
+    "max_retries": 3,
+    "retry_prompt": "Sorry, I didn't get that. Please try again.",
+    "barge_in": true,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "system",
+        "text": "Check user input from main menu options",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "6",
+    "node": "No Input/No Match",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "system",
+        "text": "",
+        "audio_id": ""
+      },
+      "control_events_url": "Q2_1st_1"
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "7",
+    "node": "Block My Account",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "caller",
+        "text": "Press 1 - Block account functionality",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "8",
+    "node": "Loan Eligibility Issues",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "caller",
+        "text": "Press 2 - Loan eligibility inquiry",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "9",
+    "node": "BVN Enquiry",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "caller",
+        "text": "Press 3 - BVN retrieval functionality",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "10",
+    "node": "Account Details Menu",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "caller",
+        "text": "Press 4 - Account information request",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "11",
+    "node": "Token Enquiries",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "caller",
+        "text": "Press 5 - Token information",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "12",
+    "node": "Routing Number or Swift Code Enquiry",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "caller",
+        "text": "Press 6 - Routing number or swift code inquiry",
+        "audio_id": ""
+      },
+      "control_events_url": ""
+    }
+  },
+  {
+    "command": "connect",
+    "node_id": "13",
+    "node": "Agent Transfer",
+    "connected_nodes_list": [],
+    "type": "predefined",
+    "choice": "single",
+    "stopTime": null,
+    "input_type": null,
+    "max_retries": 0,
+    "retry_prompt": "",
+    "barge_in": false,
+    "language": "en-US",
+    "params": {
+      "audio": {
+        "type": "tts",
+        "actor": "agent",
+        "text": "Press 7 - Transfer to call centre agent",
+        "audio_id": ""
+      },
+      "control_events_url": "Q2_1st_1"
+    }
+  }
+]

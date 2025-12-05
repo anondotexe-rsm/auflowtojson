@@ -1,0 +1,25 @@
+{
+  "command": "connect",
+  "node_id": "{{id}}",
+  "node": "{{node}}",
+  "connected_nodes_list": "{{connected_nodes_list}}",
+  "type": "{{predefined | agenticdecision | userInput}}",
+  "choice": "{{single | multiple}}",
+  "stopTime": "{{stopTime}}",
+
+  "input_type": "{{dtmf | speech | NLP}}",
+  "max_retries": "{{number}}",
+  "retry_prompt": "{{retry_prompt}}",
+  "barge_in": "{{true | false}}",
+  "language": "{{language_code}}",
+
+  "params": {
+    "audio": {
+      "type": "{{tts | file}}",
+      "actor": "{{actor}}",
+      "text": "{{text}}",
+      "audio_id": "{{audio_file_id_if_any}}"
+    },
+    "control_events_url": "{{supported_urls}}"
+  }
+}
