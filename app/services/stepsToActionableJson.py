@@ -2,47 +2,18 @@ import boto3, json, base64
 
 
 class ActionableNodeConverter:
-    """
-    A class to convert flowchart nodes to actionable JSON format
-    using a template and AWS Bedrock Claude AI.
-    """
     
     MODEL_ARN = "arn:aws:bedrock:us-east-1:302511180962:inference-profile/global.anthropic.claude-opus-4-5-20251101-v1:0"
     
     def __init__(self, region: str = "us-east-1"):
-        """
-        Initialize the ActionableNodeConverter.
-        
-        Args:
-            region: AWS region for Bedrock client (default: us-east-1)
-        """
         self.region = region
         self.client = boto3.client("bedrock-runtime", region_name=region)
     
     def _load_json_file(self, file_path: str) -> dict:
-        """
-        Load a JSON file.
-        
-        Args:
-            file_path: Path to the JSON file
-            
-        Returns:
-            Parsed JSON data as dictionary
-        """
         with open(file_path, "r") as f:
             return json.load(f)
     
     def _get_conversion_prompt(self, template_data: dict, nodes_data: dict) -> str:
-        """
-        Generate the prompt for converting nodes to actionable format.
-        
-        Args:
-            template_data: The template structure
-            nodes_data: The flowchart nodes data
-            
-        Returns:
-            Formatted prompt string
-        """
         return f"""
 You are an expert system architect. Convert the following IVR flowchart nodes into actionable JSON format.
 
@@ -73,35 +44,12 @@ Start with [ and end with ]
 """
     
     def _clean_response(self, response_text: str) -> str:
-        """
-        Clean up the API response by removing markdown formatting if present.
-        
-        Args:
-            response_text: Raw response text from the API
-            
-        Returns:
-            Cleaned response text
-        """
         if response_text.startswith("```"):
             response_text = response_text.lstrip("`").lstrip("json").lstrip("\n")
             response_text = response_text.rstrip("`").rstrip("\n")
         return response_text
     
     def convert_nodes(self, nodes_file: str, template_file: str) -> dict:
-        """
-        Convert flowchart nodes to actionable JSON format using template and LLM.
-        
-        Args:
-            nodes_file: Path to flowchart_nodes.json
-            template_file: Path to template.json
-        
-        Returns:
-            Dictionary with transformed nodes
-            
-        Raises:
-            JSONDecodeError: If the response cannot be parsed as JSON
-        """
-        # Load input files
         nodes_data = self._load_json_file(nodes_file)
         template_data = self._load_json_file(template_file)
         
@@ -144,13 +92,6 @@ Start with [ and end with ]
             raise
     
     def save_to_file(self, data: dict, output_file: str) -> None:
-        """
-        Save the converted nodes to a JSON file.
-        
-        Args:
-            data: Dictionary containing the converted nodes
-            output_file: Path to the output JSON file
-        """
         with open(output_file, "w") as f:
             json.dump(data, f, indent=2)
         print(f"Actionable nodes saved to {output_file}")
